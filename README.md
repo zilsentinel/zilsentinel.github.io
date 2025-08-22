@@ -32,7 +32,7 @@
         }
         .chart-container {
             position: relative;
-            width: 100%;
+            width: 0%;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -43,6 +43,39 @@
             .chart-container {
                 height: 400px;
             }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 80%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover, .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -78,26 +111,30 @@
                         <div class="week-content" data-week-content="1">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <!-- Days 1-4 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 1-4</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Вівсянка довгої варки (50г), кефір сушений (20г), вершкове масло (10г), вершки (50г).</li>
-                                        <li><strong>Обід:</strong> Макарони твердих сортів (60г), креветки (100г), овочі (100-150г).</li>
-                                        <li><strong>Полуденок:</strong> Яблуко зелене (400г).</li>
-                                        <li><strong>Вечеря:</strong> Квасоля з овочами (80г), баклажани (150г), моцарелла (50г), зелень, йогурт (10г) з оливковою олією.</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 1-4</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Вівсянка довгої варки (50г), кефір сушений (20г), вершкове масло (10г), вершки (50г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Макарони твердих сортів (60г), креветки (100г), овочі (100-150г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Яблуко зелене (400г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Квасоля з овочами (80г), баклажани (150г), моцарелла (50г), зелень, йогурт (10г) з оливковою олією.</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <!-- Days 5-8 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 5-8</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Пшоно (50г), вершкове масло (10г), ізюм (5г), творог 5% (50г), курага/ізюм (40г).</li>
-                                        <li><strong>Обід:</strong> Салат мікс, кіноа (60г), гарбузове насіння (20г), шпинат/салат (60г).</li>
-                                        <li><strong>Полуденок:</strong> Салат з кус-кусом (50г), зеленню, фруктами та овочами (250-300г).</li>
-                                        <li><strong>Вечеря:</strong> Рис (280-300г), тост з авокадо (хліб 100г, авокадо 50г).</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 5-8</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Пшоно (50г), вершкове масло (10г), ізюм (5г), творог 5% (50г), курага/ізюм (40г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Салат мікс, кіноа (60г), гарбузове насіння (20г), шпинат/салат (60г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Салат з кус-кусом (50г), зеленню, фруктами та овочами (250-300г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Рис (280-300г), тост з авокадо (хліб 100г, авокадо 50г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -105,26 +142,30 @@
                         <div class="week-content hidden" data-week-content="2">
                            <div class="grid md:grid-cols-2 gap-6">
                                 <!-- Days 9-12 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 9-12</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Омлет з 2-х яєць, броколі (150г), зелень, хліб гречаний (100г).</li>
-                                        <li><strong>Обід:</strong> Булгур (60г), пармезан (20г), овочева суміш (100г).</li>
-                                        <li><strong>Полуденок:</strong> Булгур (200г), тост з авокадо (100г хліб, 50г авокадо).</li>
-                                        <li><strong>Вечеря:</strong> Макарони (50г), салат з відвареною грудкою, моцарелою (250-300г).</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 9-12</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Омлет з 2-х яєць, броколі (150г), зелень, хліб гречаний (100г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Булгур (60г), пармезан (20г), овочева суміш (100г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Булгур (200г), тост з авокадо (100г хліб, 50г авокадо).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Макарони (50г), салат з відвареною грудкою, моцарелою (250-300г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <!-- Days 13-16 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 13-16</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Вівсянка (50г), вершки (50г), ягоди/банан (150г), мигдаль (20г).</li>
-                                        <li><strong>Обід:</strong> Гречка (100г), сир фета (40г), кольорова капуста (100г).</li>
-                                        <li><strong>Полуденок:</strong> Кефір/йогурт (200г), 2 фініка, кавун (300г).</li>
-                                        <li><strong>Вечеря:</strong> Рис нешліфований (80г), відварене м'ясо/гриби/кукурудза (200г), оливкова олія.</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 13-16</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Вівсянка (50г), вершки (50г), ягоди/банан (150г), мигдаль (20г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Гречка (100г), сир фета (40г), кольорова капуста (100г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Кефір/йогурт (200г), 2 фініка, кавун (300г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Рис нешліфований (80г), відварене м'ясо/гриби/кукурудза (200г), оливкова олія.</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,26 +173,30 @@
                         <div class="week-content hidden" data-week-content="3">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <!-- Days 17-20 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 17-20</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Гречка (50г), варене яйце (1шт), броколі на пару (150-200г).</li>
-                                        <li><strong>Обід:</strong> Картопля запечена (250г), кабачки запечені (100г), моцарелла (50г).</li>
-                                        <li><strong>Полуденок:</strong> Смузі (яблуко 200г, банан 200г, зелень 20-30г).</li>
-                                        <li><strong>Вечеря:</strong> Кус-кус (50г).</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 17-20</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Гречка (50г), варене яйце (1шт), броколі на пару (150-200г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Картопля запечена (250г), кабачки запечені (100г), моцарелла (50г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Смузі (яблуко 200г, банан 200г, зелень 20-30г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Кус-кус (50г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <!-- Days 21-24 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 21-24</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Кіноа (50г), мигдаль (30г), сухофрукти (40г), банан (100г).</li>
-                                        <li><strong>Обід:</strong> Рис (50г) з креветками (200г), салат з овочів та авокадо (250г).</li>
-                                        <li><strong>Полуденок:</strong> Смузі (банан 200г, малина 200г, насіння льону 15г).</li>
-                                        <li><strong>Вечеря:</strong> Булгур (60г), індичка (50г), овочевий суп (100-150г).</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 21-24</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Кіноа (50г), мигдаль (30г), сухофрукти (40г), банан (100г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Рис (50г) з креветками (200г), салат з овочів та авокадо (250г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Полуденок:</strong> Смузі (банан 200г, малина 200г, насіння льону 15г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Булгур (60г), індичка (50г), овочевий суп (100-150г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -159,14 +204,16 @@
                         <div class="week-content hidden" data-week-content="4">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <!-- Days 25-28 -->
-                                <div class="border border-amber-200 p-4 rounded-lg">
-                                    <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 25-28</h3>
-                                    <ul class="space-y-2 text-sm">
-                                        <li><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</li>
-                                        <li><strong>Сніданок:</strong> Гречка (50г), пшоно (60г), сливи (50г), мак (20г), банан/яблуко (150г).</li>
-                                        <li><strong>Обід:</strong> Кефір/мигдаль (100г).</li>
-                                        <li><strong>Вечеря:</strong> Макарони (60г), салат з індичкою (200г) та пармезаном (20г).</li>
-                                    </ul>
+                                <div class="border border-amber-200 p-4 rounded-lg flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-lg mb-2 text-teal-700">Дні 25-28</h3>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center justify-between"><span><strong>7:30:</strong> Склянка теплої негазованої води (250-500 мл).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Сніданок:</strong> Гречка (50г), пшоно (60г), сливи (50г), мак (20г), банан/яблуко (150г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Обід:</strong> Кефір/мигдаль (100г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                            <li class="flex items-center justify-between"><span><strong>Вечеря:</strong> Макарони (60г), салат з індичкою (200г) та пармезаном (20г).</span><button class="create-recipe-btn ml-2 px-2 py-1 bg-amber-200 text-amber-800 rounded-md text-xs hover:bg-teal-600 hover:text-white transition">✨ Створити рецепт</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +281,18 @@
             <p>Вся інформація є інтелектуальною власністю. Будь ласка, використовуйте її лише в особистих цілях.</p>
             <p>Дякую за розуміння та повагу до праці. &copy; 2018</p>
         </footer>
-
+    </div>
+    
+    <div id="recipeModal" class="modal">
+        <div class="modal-content w-full max-w-xl">
+            <span class="close-btn">&times;</span>
+            <h2 class="text-2xl font-bold text-teal-700 mb-4" id="modalTitle"></h2>
+            <div id="modalBody" class="text-gray-700 max-h-96 overflow-y-auto">
+                <div class="flex justify-center items-center h-full">
+                    <div class="w-12 h-12 border-4 border-teal-500 border-dashed rounded-full animate-spin"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -243,6 +301,69 @@
             const tabContents = document.querySelectorAll('.tab-content');
             const weekButtons = document.querySelectorAll('.week-btn');
             const weekContents = document.querySelectorAll('.week-content');
+            const recipeButtons = document.querySelectorAll('.create-recipe-btn');
+            const modal = document.getElementById('recipeModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeModalBtn = document.querySelector('.close-btn');
+
+            let currentChart = null;
+            const progressData = {
+                labels: ['Тиждень 1', 'Тиждень 2', 'Тиждень 3', 'Тиждень 4'],
+                datasets: [{
+                    label: 'Вага, кг (приклад)',
+                    data: [70, 69, 68.5, 67.5],
+                    backgroundColor: 'rgba(13, 148, 136, 0.6)',
+                    borderColor: 'rgba(13, 148, 136, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Талія, см (приклад)',
+                    data: [75, 73, 72, 70],
+                    backgroundColor: 'rgba(251, 191, 36, 0.6)',
+                    borderColor: 'rgba(251, 191, 36, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            function createChart() {
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                if (currentChart) {
+                    currentChart.destroy();
+                }
+                currentChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: progressData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Моніторинг ваги та об\'ємів'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y + (context.datasetIndex === 0 ? ' кг' : ' см');
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -258,6 +379,10 @@
                             content.classList.add('hidden');
                         }
                     });
+
+                    if (target === 'tracker') {
+                        setTimeout(createChart, 10);
+                    }
                 });
             });
 
@@ -278,57 +403,77 @@
                 });
             });
 
-            const ctx = document.getElementById('progressChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Тиждень 1', 'Тиждень 2', 'Тиждень 3', 'Тиждень 4'],
-                    datasets: [{
-                        label: 'Вага, кг (приклад)',
-                        data: [70, 69, 68.5, 67.5],
-                        backgroundColor: 'rgba(13, 148, 136, 0.6)',
-                        borderColor: 'rgba(13, 148, 136, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Талія, см (приклад)',
-                        data: [75, 73, 72, 70],
-                        backgroundColor: 'rgba(251, 191, 36, 0.6)',
-                        borderColor: 'rgba(251, 191, 36, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: false
-                        }
-                    },
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Моніторинг ваги та об\'ємів'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += context.parsed.y + (context.datasetIndex === 0 ? ' кг' : ' см');
-                                    }
-                                    return label;
+            recipeButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const mealText = button.parentNode.textContent.split('✨')[0].trim();
+                    const prompt = `Створи короткий і простий рецепт (у форматі списку кроків) українською мовою, використовуючи лише наступні інгредієнти: ${mealText}`;
+                    
+                    modalTitle.textContent = 'Генерація рецепту...';
+                    modalBody.innerHTML = `<div class="flex justify-center items-center h-48"><div class="w-12 h-12 border-4 border-teal-500 border-dashed rounded-full animate-spin"></div></div>`;
+                    modal.style.display = 'flex';
+
+                    let attempt = 0;
+                    const maxAttempts = 5;
+                    const baseDelay = 1000;
+
+                    async function generateRecipe() {
+                        const payload = {
+                            contents: [{
+                                role: "user",
+                                parts: [{ text: prompt }]
+                            }]
+                        };
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                        
+                        try {
+                            const response = await fetch(apiUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(payload)
+                            });
+                            
+                            if (!response.ok) {
+                                if (response.status === 429 && attempt < maxAttempts - 1) {
+                                    const delay = baseDelay * (2 ** attempt) + Math.random() * 1000;
+                                    attempt++;
+                                    setTimeout(generateRecipe, delay);
+                                    return;
                                 }
+                                throw new Error(`API call failed with status: ${response.status}`);
                             }
+
+                            const result = await response.json();
+                            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                                const recipeText = result.candidates[0].content.parts[0].text;
+                                const formattedText = recipeText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                                modalTitle.textContent = 'Створений Рецепт';
+                                modalBody.innerHTML = formattedText;
+                            } else {
+                                throw new Error('Invalid API response structure');
+                            }
+                        } catch (error) {
+                            modalTitle.textContent = 'Помилка';
+                            modalBody.innerHTML = `<p class="text-red-600">На жаль, не вдалося згенерувати рецепт. Спробуйте ще раз.</p>`;
+                            console.error("Error fetching recipe:", error);
                         }
                     }
-                }
+                    generateRecipe();
+                });
             });
+
+            closeModalBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            createChart();
         });
     </script>
-
 </body>
 </html>
