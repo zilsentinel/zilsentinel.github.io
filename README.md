@@ -422,7 +422,7 @@
                                 parts: [{ text: prompt }]
                             }]
                         };
-                        const apiKey = "AIzaSyDmpKAs61BVz9uOep8Tr5K7rQP4GEX6VTM";
+                        const apiKey = "";
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                         
                         try {
